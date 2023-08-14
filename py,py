@@ -1,0 +1,58 @@
+c1=b'10101'
+c2=6
+
+if (type(c1) and type(c2)) in [list,str,dict,tuple,set]:
+    if type(c1)==type(c2):
+        if (type(c1) and type(c2))==list:
+            print("adress before concat of lists",id(c1))
+            c1+=c2 # type: ignore
+            print(c1,"adress after concat of lists",id(c1),"both adress are same")
+        else:
+            if (type(c1) and type(c2))==dict:
+                print("adress before concat of dict",id(c1))
+                c1|=c2 # type: ignore
+                print(c1,"adress after concat of dict",id(c1),"both adress are same")
+            elif (type(c1) and type(c2))==tuple:
+                print("adress before concat of tuple",id(c1))
+                c1+=c2 # type: ignore
+                print(c1,"adress after concat of tuple",id(c1),"both adress not are same")
+            elif (type(c1) and type(c2))==str:
+                print("adress before concat of string",id(c1))
+                c1+=c2 # type: ignore
+                print(c1,"adress after concat of string",id(c1),"both adress are not same")
+            else:
+                print("adress before concat of set",id(c1))
+                c1|=c2 # type: ignore
+                print(c1,"adress after concat of set",id(c1),"both adress are  same")
+            
+    else:
+        if (type(c1) and type(c2)) in [list,str,tuple]:
+             c1+=c2 # type: ignore
+             print(c1)
+            
+        elif type(c1)==set and type(c2)==dict:
+             c1|=set(c2) # type: ignore            
+             print(c1)
+        elif type(c1)==dict and type(c2)==set:
+             c2|={tuple(c1)} # type: ignore
+             print(c2)
+               
+else:
+    if (type(c1) and type(c2)) in [int,float,complex,bytes]:
+        if (type(c1) and type(c2))==complex:
+             y=complex(c1.imag) # type: ignore
+             z=complex(c2.imag)
+             print(y,z)
+        else:
+            if (type(c1) and type(c2))==complex:
+                print("hello")
+                #display ascii values without using ord
+            else:
+                c1=c1*c2 # type: ignore
+                print("multiplication of both values is :",c1) 
+    else:
+        if (type(c1) and type(c2)) in [bool,None]:
+            print(str(c2))
+            print(str(c1))
+        
+        
